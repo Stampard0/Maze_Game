@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\Reference or to use\Interaction.cs" />
     <Compile Include="Assets\Scripts\Reference or to use\PlayerController.cs" />
     <Compile Include="Assets\Scripts\scr_Player_Control.cs" />
+    <Compile Include="Assets\Scripts\Reference or to use\MouseLook.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
