@@ -68,9 +68,15 @@ public class scr_Player_Control : MonoBehaviour
             }
             if (Input.GetAxis("Crouch") > 0) //checks if the buttons alocated to the "Crouch" input are being used
             {
-                //ApplyCrouch();
-                crouching = true; currentSpeed = speed * crouchSpeedMultiplier; CharControl.height = 1; //Debug.Log("Crouching");
-                
+                if (sprinting == true)
+                {
+                    //ApplyCrouch();
+                    sprinting = false;
+                }
+                else
+                {
+                    crouching = true; currentSpeed = speed * crouchSpeedMultiplier; CharControl.height = 1; //Debug.Log("Crouching");
+                }
             }
             if (Input.GetAxis("Crouch") <= 0)
             {
@@ -81,15 +87,16 @@ public class scr_Player_Control : MonoBehaviour
                 if (crouching == true)
                 {
                     //ApplyCrouch();
+                    crouching = false;
                 }
                 else
                 {
-                    currentSpeed = speed * sprintSpeedMultiplier;
+                    sprinting = true; currentSpeed = speed * sprintSpeedMultiplier; //Debug.Log("Sprinting");
                 }
             }
             if (Input.GetAxis("Sprint") <= 0)
             {
-                currentSpeed = speed;
+                sprinting = false; currentSpeed = speed; //Debug.Log("Not Sprinting");
             }
 
             //Apply movement to controller
