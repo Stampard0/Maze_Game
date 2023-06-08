@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Interactable : MonoBehaviour, IInteractable
+public class Interactable_Reference : MonoBehaviour, IInteractable
 {
-    [SerializeField] private Image Descript;
+    [SerializeField] private Image R_Descript;
     //Image image;
     public float waitTime = 5;
     //WaitForSecondsRealtime waitForSecondsRealtime;
@@ -13,7 +13,7 @@ public class Interactable : MonoBehaviour, IInteractable
     void Start()
     {
         //Descript = GetComponent<Image>();
-        Descript.gameObject.SetActive(false);
+        R_Descript.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -34,12 +34,12 @@ public class Interactable : MonoBehaviour, IInteractable
         //}
         //yield return waitForSecondsRealtime;
         yield return new WaitForSeconds(waitTime);
-        Descript.gameObject.SetActive(false);
+        R_Descript.gameObject.SetActive(false);
         gameObject.layer = 3;
     }
     public void Activate()
     {
-        Descript.gameObject.SetActive(true);
+        R_Descript.gameObject.SetActive(true);
         Debug.Log("Active");
         StartCoroutine(DoActiveWait());
         gameObject.layer = 0;
