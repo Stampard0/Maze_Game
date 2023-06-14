@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
-public class Interactable : MonoBehaviour, IInteractable
+public class Interactable1 : MonoBehaviour, IInteractable
 {
     //[SerializeField] private Image Descript;
     [SerializeField] private Object Wall;
@@ -11,7 +12,6 @@ public class Interactable : MonoBehaviour, IInteractable
     void Start()
     {
         gameObject.SetActive(true);
-        //Wall = Object.Find("Wall");
     }
 
     // Update is called once per frame
@@ -21,11 +21,11 @@ public class Interactable : MonoBehaviour, IInteractable
     }
     public void Activate()
     {
-
-        Wall.gameObject.SetActive(false);
+        //Wall.gameObject.SetActive(false);
         //Descript.gameObject.SetActive(true);
         Debug.Log("Active");
         gameObject.SetActive(false);
+        Open1.item1Collected.Invoke();
         Debug.Log("Interact");
     }
 }
