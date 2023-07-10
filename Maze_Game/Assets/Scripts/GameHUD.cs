@@ -9,6 +9,8 @@ public class GameHUD : MonoBehaviour
     [SerializeField] private Image crosshairImg;
     //public GameObject gameObject;
     public static GameHUD Instance { get; private set; }
+    [SerializeField] private Image winHUD;
+    public float waitTime = 5;
 
     private void Awake()
     {
@@ -49,5 +51,17 @@ public class GameHUD : MonoBehaviour
     public void CrosshairColourCant(Color colour)
     {
         crosshairImg.color = Color.red;
+    }
+    IEnumerator DoActiveWait()
+    {
+        yield return new WaitForSeconds(waitTime);
+        winHUD.gameObject.SetActive(false);
+        Application.Quit();
+    }
+    public void GameWin()
+    {
+        Debug.Log("Win");
+        winHUD.gameObject.SetActive(true);
+        StartCoroutine(DoActiveWait());
     }
 }

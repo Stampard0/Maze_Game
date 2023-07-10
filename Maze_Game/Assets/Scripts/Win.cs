@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Win : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private GameHUD manager;
+
+    private void Awake()
     {
-        
+        manager = FindObjectOfType<GameHUD>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.CompareTag("Player") == true)
+        {
+            manager.GameWin();
+        }
     }
 }
