@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class GameHUD : MonoBehaviour
 {
@@ -12,9 +13,15 @@ public class GameHUD : MonoBehaviour
     [SerializeField] private Image winHUD;
     public float waitTime = 5;
 
+    [SerializeField] private AudioClip collected;
+    private AudioSource aSrc;
+
+    public static UnityEvent anItemCollected;
+
     private void Awake()
     {
-        if(Instance == null)
+        TryGetComponent(out aSrc);
+        if (Instance == null)
         {
             Instance = this;
         }
@@ -27,6 +34,8 @@ public class GameHUD : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         //crosshairImg = gameObject.GetComponent<Image>();
+        anItemCollected = new UnityEvent();
+        anItemCollected.AddListener(CollectedSound);
     }
 
     // Update is called once per frame
@@ -63,5 +72,9 @@ public class GameHUD : MonoBehaviour
         Debug.Log("Win");
         winHUD.gameObject.SetActive(true);
         StartCoroutine(DoActiveWait());
+    }
+    private void CollectedSound()
+    {
+        aSrc.PlayOneShot(collected);
     }
 }

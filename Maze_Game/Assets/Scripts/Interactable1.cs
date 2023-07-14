@@ -8,6 +8,14 @@ public class Interactable1 : MonoBehaviour, IInteractable
 {
     //[SerializeField] private Image Descript;
     [SerializeField] private Object Wall;
+    //[SerializeField] private AudioClip collected;
+    
+    //private AudioSource aSrc;
+
+    private void Awake()
+    {
+        //TryGetComponent(out aSrc);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +32,9 @@ public class Interactable1 : MonoBehaviour, IInteractable
         //Wall.gameObject.SetActive(false);
         //Descript.gameObject.SetActive(true);
         Debug.Log("Active");
+        //aSrc.PlayOneShot(collected);
         gameObject.SetActive(false);
+        GameHUD.anItemCollected.Invoke();
         Open1.item1Collected.Invoke();
         Debug.Log("Interact");
     }

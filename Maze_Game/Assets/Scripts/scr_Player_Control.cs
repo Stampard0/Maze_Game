@@ -11,7 +11,7 @@ public class scr_Player_Control : MonoBehaviour
     private float gravity = 3.5f; // gravity
     [Range(1f, 10f)] public float speed = 2f; // normal player speed
     [Range(0.1f, 1f)] public float crouchSpeedMultiplier = 0.5f; //crouch speed
-    [SerializeField] float jumpForce = 1.5f; // jump force
+    //[SerializeField] float jumpForce = 1.5f; // jump force
     private bool crouching = false; //crouch bool
     private bool isGrounded = false; //not on ground
     private float sprintSpeedMultiplier = 2f;
@@ -64,7 +64,7 @@ public class scr_Player_Control : MonoBehaviour
         {
             if (Input.GetAxis("Jump") > 0) //checks if the buttons alocated to the "Jump" input are being used
             {
-                velocity = jumpForce * currentSpeed; //makes the player character jump
+                //velocity = jumpForce * currentSpeed; //makes the player character jump
             }
             if (Input.GetAxis("Crouch") > 0) //checks if the buttons alocated to the "Crouch" input are being used
             {
